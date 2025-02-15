@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Barang - Petshop</title>
+    <style>
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(rgba(161, 219, 235, 0.3), rgba(174, 203, 238, 0.3)), 
+                        url('bacground.new.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #10b7e1;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f0f8ff;
+            transition: 0.3s;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            background: #10b7e1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            animation: bounce 1s infinite;
+        }
+
+        button:hover {
+            background: #00cbe6;
+            transform: scale(1.05);
+            box-shadow: 0px 0px 10px rgba(0, 203, 230, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Daftar Barang yang Dijual di Petshop</h2>
+        <p>Berikut adalah daftar barang yang tersedia di toko kami:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Barang</th>
+                    <th>Harga</th>
+                    <th>Gambar</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+
+            </tbody>
+        </table>
+
+        <button onclick="lanjutKePemesanan()">Lanjut</button>
+    </div>
+
+    <script>
+        const products = [
+            { id: 5, name: "Makanan Kucing", price: "Rp 50.000/kg", img: "Makanan kucing.jpg" },
+            { id: 6, name: "Shampo Hewan", price: "Rp 70.000/Botol", img: "Shampo hewan.jpg" },
+            { id: 7, name: "Kandang Peliharaan", price: "Rp 2.000.000", img: "Kandang Hewan.jpg" },
+            { id: 8, name: "Pasir Hewan", price: "Rp 100.000/25 kg", img: "Pasir Hewan.jpg" }
+        ];
+
+        function loadProducts() {
+            let table = document.getElementById("product-list");
+            products.forEach((item, index) => {
+                let row = `
+                    <tr>
+                        <td>${index + 5}</td>
+                        <td>${item.name}</td>
+                        <td>${item.price}</td>
+                        <td><img src="${item.img}" alt="${item.name}"></td>
+                    </tr>
+                `;
+                table.innerHTML += row;
+            });
+        }
+
+        function lanjutKePemesanan() {
+            window.location.href = "LamanPemesanan.HTML";
+        }
+
+        window.onload = loadProducts;
+    </script>
+
+</body>
+</html>
